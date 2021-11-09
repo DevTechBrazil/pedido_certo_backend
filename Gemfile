@@ -32,6 +32,8 @@ group :development, :test do
   gem 'pry-byebug'
   # rspec-rails brings the RSpec testing framework to Ruby on Rails
   gem 'rspec-rails', '~> 5.0.0'
+  # factory_bot is a fixtures replacement with a straightforward definition syntax
+  gem "factory_bot_rails"
 end
 
 group :development do
