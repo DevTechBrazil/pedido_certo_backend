@@ -1,5 +1,5 @@
 class CustomersController < ApplicationController
-  before_action :set_customer, only: [:create]
+  before_action :set_customer, only: [:show, :update, :destroy]
 
   # GET /customers
   def index
@@ -11,7 +11,7 @@ class CustomersController < ApplicationController
   # POST /customers
   def create
     @customer = Customer.new(customer_params)
-
+    @customer.save
     if @customer.save
       render json: @customer, status: :created, location: @customer
     else
@@ -20,13 +20,13 @@ class CustomersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_customer
-      @customer = Customer.find(params[:id])
-    end
-
     # Only allow a list of trusted parameters through.
     def customer_params
       params.require(:customer).permit(:name, :telephone, :email)
+    end
+
+  # Use callbacks to share common setup or constraints between actions.
+    def set_customer
+      @customer = Customer.find(params[:id])
     end
 end
