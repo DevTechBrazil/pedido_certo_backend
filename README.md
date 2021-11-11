@@ -1,14 +1,24 @@
 # README
 
-* Ruby version
-  - 3.0.2
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-* Setup Instructions
-  1) Clone the project
-  2) Run `bundle install`
-  3) Generate the databases: `rails db:create`
-  4) Run the migrations: `rails db:migrate`
-  5) Run the server `rails s`
+Things you may want to cover:
+
+* Ruby version
+
+* System dependencies
+
+* Configuration
+
+* Database creation
+
+* Database initialization
 
 * How to run the test suite
-  - `rspec`
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
