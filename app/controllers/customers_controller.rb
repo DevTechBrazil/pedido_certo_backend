@@ -1,9 +1,5 @@
 class CustomersController < ApplicationController
-<<<<<<< HEAD
   before_action :set_customer, only: [:create]
-=======
-  before_action :set_customer, only: [:show, :update, :destroy]
->>>>>>> 3e5e798d36af851dcf90272cddbc589ba31f9b28
 
   # GET /customers
   def index
@@ -11,7 +7,6 @@ class CustomersController < ApplicationController
 
     render json: @customers
   end
-<<<<<<< HEAD
 
   # POST /customers
   def create
@@ -34,6 +29,4 @@ class CustomersController < ApplicationController
     def customer_params
       params.require(:customer).permit(:name, :telephone, :email)
     end
-=======
->>>>>>> 3e5e798d36af851dcf90272cddbc589ba31f9b28
 end

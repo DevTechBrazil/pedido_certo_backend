@@ -33,8 +33,6 @@ RSpec.describe "/customers", type: :request do
     {}
   }
 
-=======
->>>>>>> 3e5e798d36af851dcf90272cddbc589ba31f9b28
   describe "GET /index" do
     it "renders a successful response" do
       Customer.create! valid_attributes
@@ -42,7 +40,6 @@ RSpec.describe "/customers", type: :request do
       expect(response).to be_successful
     end
   end
-<<<<<<< HEAD
 
   describe "POST /create" do
     context "with valid parameters" do
@@ -77,6 +74,4 @@ RSpec.describe "/customers", type: :request do
       end
     end
   end
-=======
->>>>>>> 3e5e798d36af851dcf90272cddbc589ba31f9b28
 end
