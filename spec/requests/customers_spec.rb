@@ -13,10 +13,39 @@ require 'rails_helper'
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
 RSpec.describe "/customers", type: :request do
+
+  let(:valid_attributes) {
+    {
+      name: 'Customer name',
+      phone_number: '(11) 1010-2220',
+      email: 'customer@gmail.com'
+    }
+  }
+
+  let(:invalid_attributes) {
+    {
+      name: 'Customer name',
+      phone_number: nil,
+      email: nil,
+    }
+  }
+
+  let(:valid_headers) {
+    {}
+  }
+
   describe "GET /index" do
     it "renders a successful response" do
       Customer.create! valid_attributes
       get customers_url, headers: valid_headers, as: :json
+      expect(response).to be_successful
+    end
+  end
+
+  describe "GET /show" do
+    it "renders a successful response" do
+      customer = Customer.create! valid_attributes
+      get customer_url(customer), as: :json
       expect(response).to be_successful
     end
   end
