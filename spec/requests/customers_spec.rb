@@ -13,6 +13,7 @@ require 'rails_helper'
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
 RSpec.describe "/customers", type: :request do
+<<<<<<< HEAD
   # This should return the minimal set of attributes required to create a valid
   # Customer. As you add validations to Customer, be sure to
   # adjust the attributes here as well.
@@ -32,6 +33,8 @@ RSpec.describe "/customers", type: :request do
     {}
   }
 
+=======
+>>>>>>> 3e5e798d36af851dcf90272cddbc589ba31f9b28
   describe "GET /index" do
     it "renders a successful response" do
       Customer.create! valid_attributes
@@ -39,6 +42,7 @@ RSpec.describe "/customers", type: :request do
       expect(response).to be_successful
     end
   end
+<<<<<<< HEAD
 
   describe "POST /create" do
     context "with valid parameters" do
@@ -73,4 +77,6 @@ RSpec.describe "/customers", type: :request do
       end
     end
   end
+=======
+>>>>>>> 3e5e798d36af851dcf90272cddbc589ba31f9b28
 end
