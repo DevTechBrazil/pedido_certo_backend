@@ -13,6 +13,15 @@ class CustomersController < ApplicationController
     render json: @customer
   end
 
+  # PATCH/PUT /customers/1
+  def update
+    if @customer.update(customer_params)
+      render json: @customer
+    else
+      render json: @customer.errors, status: :unprocessable_entity
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_customer
