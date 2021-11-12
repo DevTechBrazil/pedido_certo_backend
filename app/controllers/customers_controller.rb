@@ -8,10 +8,11 @@ class CustomersController < ApplicationController
     render json: @customers
   end
 
+feature/customer_create
   # POST /customers
   def create
     @customer = Customer.new(customer_params)
-    @customer.save
+    
     if @customer.save
       render json: @customer, status: :created, location: @customer
     else
@@ -30,3 +31,14 @@ class CustomersController < ApplicationController
       @customer = Customer.find(params[:id])
     end
 end
+  # GET /customers/1
+  def show
+    render json: @customer
+  end
+
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_customer
+      @customer = Customer.find(params[:id])
+    end
+  end
