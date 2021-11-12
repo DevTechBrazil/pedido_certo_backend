@@ -7,16 +7,20 @@ class CustomersController < ApplicationController
 
     render json: @customers
   end
+  
+  # GET /customers/1
+  def show
+    render json: @customer
+  end
 
-  # DELETE /customers/1
   def destroy
     @customer.destroy
   end
 
-  private
 
-  # Use callbacks to share common setup or constraints between actions.
-  def set_customer
-    @customer = Customer.find(params[:id])
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_customer
+      @customer = Customer.find(params[:id])
+    end
   end
-end
