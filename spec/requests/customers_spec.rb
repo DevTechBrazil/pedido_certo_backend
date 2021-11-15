@@ -49,5 +49,26 @@ RSpec.describe "/customers", type: :request do
       expect(response).to be_successful
     end
   end
+
+
+
+  describe "PUT /update" do
+
+    let(:new_attributes) {
+      {
+        name: 'Evandro',
+        phone_number: '(55) 9999-8888',
+        email: 'ebolzan@inf.ufsm.br'
+      }
+    }
+    it "renders a successful response" do
+      customer = Customer.create! valid_attributes
+      patch customer_url(customer), params: { customer: new_attributes }, as: :json
+      customer.reload
+      expect(customer.name).to eq('Evandro')
+      expect(customer.phone_number).to eq('(55) 9999-8888')
+      expect(customer.email).to eq('ebolzan@inf.ufsm.br')
+    end
+  end
   
 end
