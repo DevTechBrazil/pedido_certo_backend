@@ -31,6 +31,7 @@ RSpec.describe "/customers", type: :request do
 
   let(:valid_headers) {
     {}
+  }
 
   describe "GET /index" do
     it "renders a successful response" do
@@ -70,13 +71,9 @@ RSpec.describe "/customers", type: :request do
   describe "DELETE /destroy" do
     it "delete a customer" do
       customer = FactoryBot.create(:customer)
-
       expect do
         delete customer_url(customer)
       end.to change(Customer, :count).by(-1)
-    end 
-  end  
-
-  
-
+    end
+  end
 end
