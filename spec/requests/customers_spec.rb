@@ -16,7 +16,7 @@ RSpec.describe "/customers", type: :request do
   let(:valid_attributes) {
     {
       name: 'Customer name',
-      telephone: '(11) 1010-2220',     
+      telephone: '1110102220',
       email: 'customer@gmail.com'
     }
   }
@@ -49,21 +49,30 @@ RSpec.describe "/customers", type: :request do
     end
   end
 
+  describe "POST /create" do
+    context "with valid parameters" do
+      it "creates a new Article" do
+        expect {
+          post customers_url, params: { customer: valid_attributes }
+        }.to change(Customer, :count).by(1)
+      end
+    end
+  end
 
   describe "PUT /update" do
-    let(:new_attributes) {
+    let(:new_attributes)do
       {
-        name: 'Evandro',
-        phone_number: '(55) 9999-8888',
-        email: 'ebolzan@inf.ufsm.br'
+        name: "Evandro",
+        telephone: "5599998888",
+        email: "ebolzan@inf.ufsm.br"
       }
-    }
+      end
     it "renders a successful response" do
       customer = Customer.create! valid_attributes
       patch customer_url(customer), params: { customer: new_attributes }, as: :json
       customer.reload
       expect(customer.name).to eq('Evandro')
-      expect(customer.phone_number).to eq('(55) 9999-8888')
+      expect(customer.telephone).to eq('5599998888')
       expect(customer.email).to eq('ebolzan@inf.ufsm.br')
     end
   end

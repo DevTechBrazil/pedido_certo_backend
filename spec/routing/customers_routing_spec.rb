@@ -19,4 +19,8 @@ RSpec.describe CustomersController, type: :routing do
       id: "1"
     )
   end
+  it "routes to #create" do
+    expect(post: "/customers").to route_to("customers#create")
+  end
+
 end
