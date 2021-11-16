@@ -13,14 +13,26 @@ class CustomersController < ApplicationController
     render json: @customer
   end
 
+  def update
+    if @customer.update(customer_params)
+      render json: @customer
+    else
+      render json: @customer.errors, status: :unprocessable_entity
+    end
+  end
+  
   def destroy
     @customer.destroy
   end
-
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_customer
       @customer = Customer.find(params[:id])
+    end
+
+    # Only allow a list of trusted parameters through.
+    def customer_params
+      params.require(:customer).permit(:name, :phone_number, :email)
     end
   end

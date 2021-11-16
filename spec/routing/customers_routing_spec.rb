@@ -8,6 +8,8 @@ RSpec.describe CustomersController, type: :routing do
 
     it { should route(:get, '/customers/1').to(action: :show, id: 1) }
 
+    it { should route(:put, '/customers/1').to(action: :update, id: 1) }
+
   end
 
   it "routes /customer/1 to customer#destroy" do
