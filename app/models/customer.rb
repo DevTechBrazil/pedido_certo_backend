@@ -1,3 +1,8 @@
 class Customer < ApplicationRecord
-  validates :name, :phone_number, :email, presence: true
+  validates :name, :telephone, :email, presence: true
+  validates :name, length: {minimum:4}
+  validates :telephone, length: {minimum:13}
+  validates :email, length: {minimum:10}, uniqueness: true
+
+
 end

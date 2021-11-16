@@ -16,7 +16,7 @@ RSpec.describe "/customers", type: :request do
   let(:valid_attributes) {
     {
       name: 'Customer name',
-      phone_number: '(11) 1010-2220',
+      telephone: '(11) 1010-2220',     
       email: 'customer@gmail.com'
     }
   }
@@ -24,7 +24,7 @@ RSpec.describe "/customers", type: :request do
   let(:invalid_attributes) {
     {
       name: 'Customer name',
-      phone_number: nil,
+      telephone: nil,
       email: nil,
     }
   }

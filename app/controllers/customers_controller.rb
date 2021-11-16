@@ -8,11 +8,23 @@ class CustomersController < ApplicationController
     render json: @customers
   end
   
-  # GET /customers/1
+ # GET /customers/1
   def show
     render json: @customer
   end
 
+
+  # POST /customers
+  def create
+    @customer = Customer.new(customer_params)
+    
+    if @customer.save
+      render json: @customer, status: :created, location: @customer
+    else
+      render json: @customer.errors, status: :unprocessable_entity
+    end
+  end
+  
   def update
     if @customer.update(customer_params)
       render json: @customer
