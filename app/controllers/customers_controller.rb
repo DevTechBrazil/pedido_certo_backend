@@ -7,19 +7,22 @@ class CustomersController < ApplicationController
 
     render json: @customers
   end
-
+  
   # GET /customers/1
   def show
     render json: @customer
   end
 
-  # PATCH/PUT /customers/1
   def update
     if @customer.update(customer_params)
       render json: @customer
     else
       render json: @customer.errors, status: :unprocessable_entity
     end
+  end
+  
+  def destroy
+    @customer.destroy
   end
 
   private

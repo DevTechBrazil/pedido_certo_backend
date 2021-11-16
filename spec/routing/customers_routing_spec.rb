@@ -11,4 +11,12 @@ RSpec.describe CustomersController, type: :routing do
     it { should route(:put, '/customers/1').to(action: :update, id: 1) }
 
   end
+
+  it "routes /customer/1 to customer#destroy" do
+    expect(delete: "/customers/1").to route_to(
+      controller: "customers",
+      action: "destroy",
+      id: "1"
+    )
+  end
 end
