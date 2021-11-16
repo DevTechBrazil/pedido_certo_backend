@@ -13,7 +13,6 @@ require 'rails_helper'
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
 RSpec.describe "/customers", type: :request do
-
   let(:valid_attributes) {
     {
       name: 'Customer name',
@@ -32,7 +31,6 @@ RSpec.describe "/customers", type: :request do
 
   let(:valid_headers) {
     {}
-  }
 
   describe "GET /index" do
     it "renders a successful response" do
@@ -41,7 +39,7 @@ RSpec.describe "/customers", type: :request do
       expect(response).to be_successful
     end
   end
-
+  
   describe "GET /show" do
     it "renders a successful response" do
       customer = Customer.create! valid_attributes
@@ -49,4 +47,36 @@ RSpec.describe "/customers", type: :request do
       expect(response).to be_successful
     end
   end
+
+
+  describe "PUT /update" do
+    let(:new_attributes) {
+      {
+        name: 'Evandro',
+        phone_number: '(55) 9999-8888',
+        email: 'ebolzan@inf.ufsm.br'
+      }
+    }
+    it "renders a successful response" do
+      customer = Customer.create! valid_attributes
+      patch customer_url(customer), params: { customer: new_attributes }, as: :json
+      customer.reload
+      expect(customer.name).to eq('Evandro')
+      expect(customer.phone_number).to eq('(55) 9999-8888')
+      expect(customer.email).to eq('ebolzan@inf.ufsm.br')
+    end
+  end
+
+  describe "DELETE /destroy" do
+    it "delete a customer" do
+      customer = FactoryBot.create(:customer)
+
+      expect do
+        delete customer_url(customer)
+      end.to change(Customer, :count).by(-1)
+    end 
+  end  
+
+  
+
 end

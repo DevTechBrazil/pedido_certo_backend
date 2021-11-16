@@ -7,8 +7,13 @@ class CustomersController < ApplicationController
 
     render json: @customers
   end
+  
+ # GET /customers/1
+  def show
+    render json: @customer
+  end
 
-feature/customer_create
+
   # POST /customers
   def create
     @customer = Customer.new(customer_params)
@@ -19,26 +24,27 @@ feature/customer_create
       render json: @customer.errors, status: :unprocessable_entity
     end
   end
-
-  private
-    # Only allow a list of trusted parameters through.
-    def customer_params
-      params.require(:customer).permit(:name, :telephone, :email)
+  
+  def update
+    if @customer.update(customer_params)
+      render json: @customer
+    else
+      render json: @customer.errors, status: :unprocessable_entity
     end
-
-  # Use callbacks to share common setup or constraints between actions.
-    def set_customer
-      @customer = Customer.find(params[:id])
-    end
-end
-  # GET /customers/1
-  def show
-    render json: @customer
+  end
+  
+  def destroy
+    @customer.destroy
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_customer
       @customer = Customer.find(params[:id])
+    end
+
+    # Only allow a list of trusted parameters through.
+    def customer_params
+      params.require(:customer).permit(:name, :phone_number, :email)
     end
   end
