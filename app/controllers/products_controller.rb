@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:show]
+  before_action :set_product, only: [:show, :update, :destroy]
 
   # GET /products/1
   def show
@@ -15,16 +15,22 @@ class ProductsController < ApplicationController
     else
       render json: @product.errors, status: :unprocessable_entity
     end
-  end  
+  end
+
+  def destroy
+    @product.destroy
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product
       @product = Product.find(params[:id])
     end
-  end
 
   private
+    def set_product
+      @product = Product.find(params[:id])
+    end
     # Only allow a list of trusted parameters through.
     def product_params
       params.require(:product).permit(:description, :product_type, :cost, :sale_value)
