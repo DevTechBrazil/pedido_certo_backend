@@ -1,7 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe "Products", type: :request do
-  describe "GET /index" do
-    pending "add some examples (or delete) #{__FILE__}"
+  describe "DELETE /destroy" do
+    it "delete a product" do
+      product = FactoryBot.create(:product)
+      expect do
+        delete product_url(product)
+      end.to change(Product, :count).by(-1)
+    end
   end
 end
