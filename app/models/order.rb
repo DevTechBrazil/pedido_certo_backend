@@ -1,5 +1,5 @@
 class Order < ApplicationRecord
-  validates :registration, :delivery, :amount, :last_payment, presence: true
-  validates :registration, :delivery, :last_payment, length:{minimum:4}
+  validates :registration_date, :delivery_date, :amount, :last_payment_date, presence: true
+  validates :registration_date, :delivery_date, :last_payment_date, length:{minimum:4}
   validates :amount, length:{minimum:2}
 end

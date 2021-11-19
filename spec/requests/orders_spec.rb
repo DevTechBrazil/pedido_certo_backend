@@ -18,19 +18,19 @@ RSpec.describe "/orders", type: :request do
   # adjust the attributes here as well.
   let(:valid_attributes) {
     {
-      registration: '2021-11-19',
-      delivery: '2021-11-19',
+      registration_date: '2021-11-19',
+      delivery_date: '2021-11-19',
       amount: 100,
-      last_payment: '2021-11-19'
+      last_payment_date: '2021-11-19'
     }
   }
 
   let(:invalid_attributes) {
     {
-      registration: '2021-11-19',
-      delivery: nil,
+      registration_date: '2021-11-19',
+      delivery_date: nil,
       amount: nil,
-      last_payment: nil
+      last_payment_date: nil
     }
   }
 
