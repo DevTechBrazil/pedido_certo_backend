@@ -47,6 +47,7 @@ end
 group :test do
   # Shoulda Matchers provides RSpec- and Minitest-compatible one-liners to test common Rails functionality
   gem 'shoulda-matchers', '~> 5.0'
+  gem "factory_bot_rails"
 end
 
 group :development do
