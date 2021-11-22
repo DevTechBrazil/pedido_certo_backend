@@ -21,11 +21,6 @@ class ProductsController < ApplicationController
     @product.destroy
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_product
-      @product = Product.find(params[:id])
-    end
 
   private
     def set_product
