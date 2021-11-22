@@ -25,4 +25,4 @@ production:
   <<: *default
   database: pedido_certo_production
   username: pedido_certo
-  password: <%= ENV['PRECO_CERTO_DATABASE_PASSWORD'] %>
+  password: <%= ENV['PEDIDO_CERTO_DATABASE_PASSWORD'] %>
