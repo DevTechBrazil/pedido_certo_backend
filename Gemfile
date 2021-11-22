@@ -36,12 +36,18 @@ group :development, :test do
   gem "factory_bot_rails"
   # This gem is a port of Perl's Data::Faker library that generates fake data.
   gem 'faker'
+  # Use simplecov
+  gem "simplecov", "~> 0.21.2", require: false
+  # Rubycritic
+  gem "rubycritic"
+  # Rubocop
+  gem "rubocop-rails"
 end
 
 group :test do
   # Shoulda Matchers provides RSpec- and Minitest-compatible one-liners to test common Rails functionality
   gem 'shoulda-matchers', '~> 5.0'
-  gem 'factory_bot_rails'
+  gem "factory_bot_rails"
 end
 
 group :development do
@@ -52,3 +58,4 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
