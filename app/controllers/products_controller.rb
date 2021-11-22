@@ -1,5 +1,11 @@
 class ProductsController < ApplicationController
+  before_action :set_product, only: [:show]
 
+  # GET /products/1
+  def show
+    render json: @product
+  end
+  
   # POST /products
   def create
     @product = Product.new(product_params)
@@ -9,8 +15,14 @@ class ProductsController < ApplicationController
     else
       render json: @product.errors, status: :unprocessable_entity
     end
-  end
+  end  
 
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_product
+      @product = Product.find(params[:id])
+    end
+  end
 
   private
     # Only allow a list of trusted parameters through.

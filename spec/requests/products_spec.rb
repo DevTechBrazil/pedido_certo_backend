@@ -18,10 +18,10 @@ RSpec.describe "/products", type: :request do
   # adjust the attributes here as well.
   let(:valid_attributes) {
     {
-      description: 'Product_name',
-      product_type: 0,
-      cost: 100,
-      sale_value: 150
+      description: 'Product description',
+      product_type: 'Product type',
+      cost: 99.99,
+      sale_value: 101.25
     }
   }
 
@@ -38,6 +38,13 @@ RSpec.describe "/products", type: :request do
     {}
   }
 
+  describe "GET /show" do
+    it "renders a successful response" do
+      product = Product.create! valid_attributes
+      get product_url(product), as: :json
+      expect(response).to be_successful
+    end
+  end
 
   describe "POST /create" do
     context "with valid parameters" do
