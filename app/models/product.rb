@@ -1,6 +1,5 @@
 class Product < ApplicationRecord
-  validates_presence_of(:description)
-  validates_presence_of(:product_type)
-  validates_presence_of(:cost)
-  validates_presence_of(:sale_value)
+  validates :description, :product_type, :cost, :sale_value, presence: true
+  validates :description, length:{minimum:4}
+  validates :cost, :sale_value, length:{minimum:2}
 end

@@ -27,17 +27,13 @@ RSpec.describe "/products", type: :request do
 
   let(:invalid_attributes) {
     {
-      description: nil,
+      description: 'Product_name',
       product_type: nil,
       cost: nil,
       sale_value: nil
     }
   }
 
-  # This should return the minimal set of values that should be in the headers
-  # in order to pass any filters (e.g. authentication) defined in
-  # ProductsController, or in your router and rack
-  # middleware. Be sure to keep this updated too.
   let(:valid_headers) {
     {}
   }
@@ -50,4 +46,37 @@ RSpec.describe "/products", type: :request do
     end
   end
 
+  describe "POST /create" do
+    context "with valid parameters" do
+      it "creates a new Product" do
+        expect {
+          post products_url,
+               params: { product: valid_attributes }, headers: valid_headers, as: :json
+        }.to change(Product, :count).by(1)
+      end
+
+      it "renders a JSON response with the new product" do
+        post products_url,
+             params: { product: valid_attributes }, headers: valid_headers, as: :json
+        expect(response).to have_http_status(:created)
+        expect(response.content_type).to include("application/json")
+      end
+    end
+
+    context "with invalid parameters" do
+      it "does not create a new Product" do
+        expect {
+          post products_url,
+               params: { product: invalid_attributes }, as: :json
+        }.to change(Product, :count).by(0)
+      end
+
+      it "renders a JSON response with errors for the new product" do
+        post products_url,
+             params: { product: invalid_attributes }, headers: valid_headers, as: :json
+        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response.content_type).to include("application/json")
+      end
+    end
+  end
 end
