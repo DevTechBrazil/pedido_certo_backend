@@ -43,7 +43,7 @@ RSpec.describe "/products", type: :request do
       get product_url(product), as: :json
       expect(response).to be_successful
     end
-
+  end
   describe "DELETE /destroy" do
     it "delete a product" do
       product = FactoryBot.create(:product)
@@ -51,6 +51,7 @@ RSpec.describe "/products", type: :request do
         delete product_url(product)
       end.to change(Product, :count).by(-1)
     end
+  end
 
   describe "POST /create" do
     context "with valid parameters" do
@@ -84,4 +85,5 @@ RSpec.describe "/products", type: :request do
         expect(response.content_type).to include("application/json")
       end
     end
+  end
 end
