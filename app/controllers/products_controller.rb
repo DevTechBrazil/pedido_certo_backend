@@ -17,6 +17,14 @@ class ProductsController < ApplicationController
     end
   end
 
+  def update
+    if @product.update(product_params)
+      render json: @product
+    else
+      render json: @product.errors, status: :unprocessable_entity
+    end
+  end
+
   def destroy
     @product.destroy
   end
