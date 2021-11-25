@@ -50,7 +50,7 @@ RSpec.describe "/products", type: :request do
     let(:new_attributes)do
       {
         description: 'Product description',
-        product_type: 'Product type',
+        product_type: 0,
         cost: 99.99,
         sale_value: 101.25
       }
@@ -62,7 +62,7 @@ RSpec.describe "/products", type: :request do
       product2.reload
       expect(product2.description).to eq('Product description')
       #TODO: dont working with product_type var. redo this next line.
-      #expect(product2.product_type).to eq('Product type')
+      expect(product2.product_type).to eq(0)
       expect(product2.cost).to eq(99.99)
       expect(product2.sale_value).to eq(101.25)
     end
