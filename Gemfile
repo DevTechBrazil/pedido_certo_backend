@@ -25,6 +25,8 @@ gem 'bootsnap', '>= 1.4.4', require: false
 # gem 'rack-cors'
 #
 gem 'dotenv-rails', '~> 2.5'
+# This gem is a port of Perl's Data::Faker library that generates fake data.
+gem 'faker'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -35,8 +37,6 @@ group :development, :test do
   gem 'rspec-rails', '~> 5.0.0'
   # factory_bot is a fixtures replacement with a straightforward definition syntax
   gem "factory_bot_rails"
-  # This gem is a port of Perl's Data::Faker library that generates fake data.
-  gem 'faker'
   # Use simplecov
   gem "simplecov", "~> 0.21.2", require: false
   # Rubycritic
