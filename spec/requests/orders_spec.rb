@@ -25,6 +25,26 @@ RSpec.describe "/orders", type: :request do
     {}
   }
 
+  describe "PUT /update" do
+    let(:new_attributes)do
+      {
+        registration_date: '2021-11-19',
+        delivery_date: '2021-11-19',
+        amount: 100,
+        last_payment_date: '2021-11-19'
+      }
+    end
+    it "renders a successful response" do
+      order = Order.create! valid_attributes
+      patch order_url(order), params: { order: new_attributes }, as: :json
+      order.reload
+      expect(order.registration_date).to eq(Date.parse('2021-11-19'))
+      expect(order.delivery_date).to eq(Date.parse('2021-11-19'))
+      expect(order.amount).to eq(100)
+      expect(order.last_payment_date).to eq(Date.parse('2021-11-19'))
+    end
+  end
+
   describe "POST /create" do
     context "with valid parameters" do
       it "creates a new Order" do

@@ -11,7 +11,16 @@ class OrdersController < ApplicationController
       render json: @order.errors, status: :unprocessable_entity
     end
   end
-  
+
+
+  def update
+    if @order.update(order_params)
+      render json: @order
+    else
+      render json: @order.errors, status: :unprocessable_entity
+    end
+  end
+
   def destroy
     @order.destroy
   end
